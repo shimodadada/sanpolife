@@ -1,0 +1,4 @@
+user-agent: *
+Disallow: 
+
+Sitemap: https://who-blog.com/SANPOLIFE/sitemap.xml

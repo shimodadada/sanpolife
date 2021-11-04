@@ -1,0 +1,409 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+body {
+  position: relative;
+  margin: 0;
+
+  /* Google Fonts適用 */
+  font-family: "Roboto", "Noto Sans JP", sans-serif;
+}
+
+/*メインカラー*/
+:root {
+  --main_color: #ed9122;
+}
+
+/* 初期設定 */
+#first,
+#result,
+#answer {
+  display: none;
+}
+
+/* 最初の画面 */
+#first.view {
+  display: block;
+}
+
+/* 計測中の画面 */
+#result.view {
+  display: block;
+}
+
+/* 計測後の画面 */
+#answer.view {
+  display: block;
+}
+
+/*header*/
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--main_color);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+header h1 {
+  display: flex;
+  justify-content: center;
+  line-height: 60px;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+header h1::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f54b";
+  font-size: 1.2rem;
+  margin-left: 10px;
+  transform: rotate(-50deg);
+}
+
+/*main*/
+
+main {
+  padding: 60px 0 0 0;
+}
+
+main h2 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin: 2em 0;
+  padding: 0 10px;
+  text-align: center;
+}
+
+main .simple_explain {
+  width: 100%;
+  max-width: 800px;
+  margin: 4em auto;
+  padding: 0 10px;
+  font-size: 1.2rem;
+}
+
+main:not(.first) .simple_explain {
+  display: none;
+}
+
+main .weight_container {
+  width: 100%;
+  max-width: 340px;
+  margin: 2em auto;
+  padding: 0 10px;
+}
+
+main:not(.first) .weight_container {
+  display: none;
+}
+
+main .weight_container .question {
+  font-size: 1.2rem;
+  margin: 1em 0;
+}
+
+main .weight_container .my_weight {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 8em;
+}
+
+main .weight_container .my_weight::before {
+  position: absolute;
+  content: "";
+  top: 2px;
+  right: 2px;
+  right: 2px;
+  width: 36px;
+  height: 36px;
+  background: var(--main_color);
+  z-index: 1;
+  pointer-events: none;
+}
+
+main .weight_container .my_weight::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  right: 20px;
+  transform: translate(50%, -50%);
+  width: 18px;
+  height: 18px;
+  background: white;
+  z-index: 2;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+main .weight_container select {
+  width: 100%;
+  height: 100%;
+  padding: 0 2.5em 0 10px;
+
+  /* 記述順番に注意 */
+  -webkit-border-radius: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-appearance: none;
+  appearance: none;
+
+  outline: none;
+  border: solid 2px #5d5d5d;
+}
+
+/*計測中画面と計測終了画面でcss共有*/
+main .measure_display,
+main .result_display {
+  position: relative;
+  width: 80%;
+  max-width: 380px;
+  min-height: 200px;
+  margin: 4em auto;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: solid 2px var(--main_color);
+  color: var(--main_color);
+  font-size: 1.6rem;
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main.second .measure_display,
+main.third .result_display {
+  display: flex;
+}
+
+main .measure_display .meter,
+main .result_display .meter,
+main .result_display .weighting,
+main .result_display .movingSpeedAverage {
+  font-size: 2rem;
+  margin: 20px 0;
+}
+
+main .measure_display .icon_announce i,
+main .result_display .finish_announce i {
+  font-size: 2.4rem;
+  margin-right: 10px;
+}
+
+main .result_display .walk_text,
+main .result_display .calorie_text,
+main .result_display .today_weight,
+main .result_display .movingSpeed {
+  margin-right: auto;
+}
+
+/*計測中画面だけのCSS*/
+main .measure_display .icon_announce {
+  font-size: 1.6rem;
+}
+
+/*計測後画面だけのCSS*/
+main .result_display .meter,
+main .result_display .weighting,
+main .result_display .movingSpeedAverage {
+  margin-left: auto;
+}
+
+main .result_display .finish_announce {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  text-align: center;
+  transform: translate(-50%, 30px);
+}
+
+/*ボタンがあるコンテンツ*/
+main .contents {
+  position: relative;
+  padding: 10em 10px 2em 10px;
+  min-height: 70vh;
+  background: var(--main_color);
+}
+
+/*白い逆三角形*/
+main .contents::before {
+  position: absolute;
+  content: "";
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 450px;
+  height: 10em;
+  background: 450px;
+  height: 10em;
+  background: white;
+  z-index: 1;
+  pointer-events: none;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+main:not(.first) .contents::before {
+  display: none;
+}
+
+main .contents .button_box {
+  position: relative;
+  width: 180px;
+  height: 180px;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+  color: var(--main_color);
+  background: white;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+
+  transition: transform 0.5s;
+}
+
+/*計測終了ボタンの表示*/
+main.first .contents .button_box.first {
+  display: flex;
+  margin: 8em auto 6em auto;
+}
+
+/*リセットボタンの表示*/
+main.second .contents .button_box.second {
+  display: flex;
+  margin: 0 auto 6em auto;
+}
+
+main.third .contents .button_box.third {
+  display: flex;
+  margin: 0 auto 6em auto;
+}
+
+/*ボタンの周りの白い円*/
+main .contents .button_box::before {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  width: 100%;
+  height: 100%;
+  border: solid 4px white;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/*ボタンのアニメーション*/
+main .contents .button_box:hover {
+  transform: scale(0.9);
+}
+
+/*ボタンの周りの白い円のアニメーション*/
+main .contents .button_box:hover::before {
+  animation: circle_anime 1.8s linear infinite;
+}
+
+@keyframes circle_anime {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  50% {
+    opacity: 0.6;
+  }
+  60% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  70% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* 使用方法説明 */
+.charactor-zone {
+  width: 90%;
+  margin: 0 auto;
+  background-color: #fff;
+  display: flex;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.charactor {
+  background-image: url(../images/charactor.jpg);
+  width: 200px;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.charactor-talk {
+  margin-left: 50px;
+  font-weight: bold;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.using {
+  max-width: 480px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.using-content {
+  background-color: var(--main_color);
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px 0;
+  width: 100px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/*フッター*/
+
+footer {
+  text-align: center;
+  padding: 10px;
+  color: var(--main_color);
+}
+
+@media (max-width: 768px) {
+  .charactor-zone {
+    display: block;
+  }
+  .charactor {
+    margin: 20px auto;
+  }
+  .charactor-talk {
+    margin: 0 auto;
+    padding-left: 0;
+  }
+}

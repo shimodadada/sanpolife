@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-7HXZZDTJE3"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-7HXZZDTJE3");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      毎日の散歩の習慣が体調を整える。散歩の消費カロリーを計算してくれる散歩アプリ｜SAMPO
+      LIFE
+    </title>
+    <!-- FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <meta
+      name="description"
+      content="いつもの散歩がどのくらいカロリーを消費しているか気になったことはありませんか？このアプリを使えばスマホを持ち歩くだけで散歩の消費カロリーがすぐにわかります。散歩を習慣にするのにおすすめです。"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Noto+Sans+JP&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js" defer></script>
+    <link rel="canonical" href="https://who-blog.com/SANPOLIFE/" />
+  </head>
+
+  <body>
+    <header>
+      <h1>SANPO LIFE</h1>
+    </header>
+
+    <main class="first">
+      <div class="simple_explain">
+        <h2>いつもの散歩を健康につなげる</h2>
+        <p>
+          あなたの「体重」と「位置情報」を使って、散歩中の消費カロリーをいつでも計測することが出来ます。
+        </p>
+      </div>
+
+      <!-- 体重選択 -->
+      <div class="weight_container">
+        <!-- 質問 -->
+        <div class="question">あなたの体重は？</div>
+
+        <!-- 選択 -->
+        <div class="my_weight">
+          <select name="weight" id="weight"></select>
+        </div>
+      </div>
+      <!-- 計測中画面 -->
+      <div class="measure_display">
+        <!-- メーター -->
+        <div class="meter"><span id="WalkDistance">0</span> m</div>
+        <!-- 計測中アナウンス -->
+        <div class="icon_announce"><i class="fas fa-walking"></i>計測中</div>
+      </div>
+
+      <!-- 計測終了画面 -->
+      <div class="result_display">
+        <div class="walk_text">歩いた距離</div>
+        <div class="meter">
+          <span id="TotalWalkDistance" class="answer-walk"></span> km
+        </div>
+
+        <!-- 消費カロリー -->
+        <div class="calorie_text">消費カロリー</div>
+        <div class="meter"><span id="Calorie">0</span> kcal</div>
+
+        <!-- 体重表示 -->
+        <div class="today_weight">今日の体重</div>
+        <div class="weighting"><span id="weightShow"></span>kg</div>
+
+        <!-- 平均移動速度 -->
+        <div class="movingSpeed">平均移動速度</div>
+        <div class="movingSpeedAverage">
+          <span id="movingAverage">0</span>km/h
+        </div>
+        <!-- 終了アナウンス -->
+        <div class="finish_announce">
+          <i class="fas fa-child"></i>お疲れ様でした！
+        </div>
+      </div>
+
+      <!-- ボタン -->
+      <div class="contents">
+        <!-- 計測開始 -->
+        <div class="button_box first" onclick="StartMeasure()">計測開始</div>
+
+        <!-- 計測終了 -->
+        <div class="button_box second" onclick="StopMeasure()">計測終了</div>
+
+        <!-- リセット -->
+        <div class="button_box third" onclick="Reset()">最初に戻る</div>
+        <div class="charactor-zone">
+          <div class="charactor"></div>
+          <div class="charactor-talk">
+            <p>このアプリは散歩しながら、消費カロリーがわかるアプリだよ！</p>
+            <p>これから使い方を説明するから確認してね！</p>
+          </div>
+        </div>
+        <div class="using">
+          <div class="using-content">使い方</div>
+          <ol>
+            <li>スタートボタンを押すと計測を開始します！</li>
+            <li>ここまでと思ったら計測終了ボタンを押してね！</li>
+            <li>歩いた距離と消費カロリーを確認することが出来るよ！</li>
+          </ol>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <small>&copy; 2021 SANPO LIFE</small>
+    </footer>
+  </body>
+</html>
